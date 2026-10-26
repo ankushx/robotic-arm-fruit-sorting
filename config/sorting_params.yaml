@@ -1,0 +1,43 @@
+# Configuration Parameters for Fruit Sorting Robotic Manipulator
+
+robot:
+  dof: 6
+  link_lengths_mm:
+    d1: 104.0   # Base to shoulder
+    a2: 82.85   # Upper arm
+    a3: 82.85   # Forearm
+    d5: 128.0   # Wrist to gripper tip
+  speed_scaling: 0.6
+  home_angles: [90, 90, 90, 90, 90, 30]
+
+vision:
+  camera_id: 0
+  frame_width: 640
+  frame_height: 480
+  confidence_threshold: 0.50
+  nms_threshold: 0.40
+  model_type: "yolov4-tiny"
+
+sorting_bins:
+  apple:
+    x_mm: 50.0
+    y_mm: 170.0
+    z_mm: 80.0
+    grip_angle: 135
+  orange:
+    x_mm: 50.0
+    y_mm: -170.0
+    z_mm: 80.0
+    grip_angle: 125
+
+calibration:
+  homography_pts_src:
+    - [180, 120]
+    - [460, 120]
+    - [140, 380]
+    - [500, 380]
+  homography_pts_dst:
+    - [220.0, -80.0]
+    - [220.0, 80.0]
+    - [130.0, -90.0]
+    - [130.0, 90.0]

@@ -1,0 +1,15 @@
+<launch>
+  <!-- Robot parameters -->
+  <rosparam file="$(find robotic_arm_fruit_sorting)/config/sorting_params.yaml" command="load" />
+
+  <!-- Yahboom DOFBOT MoveIt Planning Execution -->
+  <include file="$(find dofbot_moveit)/launch/demo.launch">
+    <arg name="use_gui" value="false" />
+  </include>
+
+  <!-- Real-Time Computer Vision & Fruit Sorting Node -->
+  <node name="fruit_sorting_node" pkg="robotic_arm_fruit_sorting" type="main_sorting_node.py" output="screen">
+    <param name="camera_id" value="0" />
+    <param name="use_yolo" value="true" />
+  </node>
+</launch>
